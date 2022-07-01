@@ -8,7 +8,13 @@ export default Vue.extend({
     return (
       <div>
         <h4>HIHI</h4>
-        <ITest msg={"1234"} />
+        <ITest
+          ref="test"
+          msg={"1234"}
+          onClick={() =>
+            (this.$refs.test as unknown as typeof ITest).printMsg()
+          }
+        />
       </div>
     );
   },

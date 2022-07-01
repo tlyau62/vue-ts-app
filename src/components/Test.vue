@@ -1,9 +1,6 @@
 <script lang="tsx">
 import Vue, { PropType } from "vue";
-
-export interface ITest {
-  (options: { msg: string }): any;
-}
+import { ITest as Abstract } from "../abstracts/ITest";
 
 export const Test = Vue.extend({
   props: {
@@ -11,12 +8,17 @@ export const Test = Vue.extend({
       type: String as PropType<string | undefined>,
     },
   },
+  methods: {
+    printMsg() {
+      console.log(this.msg);
+    },
+  },
   render() {
     return <div>{this.msg}!!!</div>;
   },
-}) as unknown as ITest;
+}) as unknown as Abstract;
 
-export const ITest: ITest = "ITest" as any;
+export const ITest: Abstract = "ITest" as any;
 
 export default Test;
 </script>
